@@ -10,10 +10,10 @@ app.use(express.json())
 
 
 app.get("/", (req, res) => {
-    res.send("okeeeeeee")
+    res.send("")
 })
 
 
 app.use(UserRoute)
 
-app.listen(process.env.port, () => console.log("Listening at port: " + process.env.port))
+app.listen(process.env.PORT, () => console.log("Listening at port: " + process.env.PORT))
