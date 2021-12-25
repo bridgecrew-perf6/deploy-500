@@ -6,7 +6,7 @@ module.exports = {
     "password": process.env.PASSWORD,
     "database": process.env.DATABASE,
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
   },
   "test": {
     "username": "root",
@@ -16,6 +16,9 @@ module.exports = {
     "dialect": "postgresql"
   },
   production: {
-    use_env_variable: 'DATABASE_URL'
+    use_env_variable: 'DATABASE_URL',
+    dialectOptions: {
+      ssl: true
+    }
   }
 }
