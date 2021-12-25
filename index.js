@@ -4,6 +4,7 @@ const express = require("express")
 const UserRoute = require("./Routes/User")
 
 const app = express()
+const port = process.env.PORT || 3000
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -16,4 +17,4 @@ app.get("/", (req, res) => {
 
 app.use(UserRoute)
 
-app.listen(process.env.PORT, () => console.log("Listening at port: " + process.env.PORT))
+app.listen(port, () => console.log("Listening at port: " + port))
