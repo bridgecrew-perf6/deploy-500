@@ -9,6 +9,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 
+app.get("/", (req, res) => {
+    res.send("okeeeeeee")
+})
+
+
 app.use(UserRoute)
 
 app.listen(process.env.port, () => console.log("Listening at port: " + process.env.port))
