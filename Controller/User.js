@@ -1,6 +1,7 @@
-const {DataTypes, Op} = require("sequelize")
-const sequelize = require("../models/index").sequelize
-const UserModel = require("../models/user")
+const UserModel = require("../models/user");
+const {DataTypes} = require("sequelize");
+const sequelize = require("../models/index").sequelize;
+
 const User = UserModel(sequelize, DataTypes)
 
 
