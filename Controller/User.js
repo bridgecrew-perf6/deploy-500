@@ -8,11 +8,14 @@ const User = UserModel(sequelize, DataTypes)
 module.exports = {
     register: async (req, res) => {
         try {
-            const data = await User.create(req.body)
-            return res.status(200).json({message: "User Berhasil dibuat", data})
+            const data = await User.findOne({where: 1})
+            console.log(data)
+            res.status(201).json({message: "User berhasil dibuat", data})
         } catch (error) {
-            console.log(error)
-            return res.status(500).json({message: "User Tidak Berhasil dibuat"})
+            res.status(500).json({message: "User Tidak Berhasil dibuat"})
         }
     },
+    sum: (number) => {
+        return number + 2 
+    }
 }

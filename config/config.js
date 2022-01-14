@@ -10,10 +10,10 @@ module.exports = {
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "password",
+    "database": "test",
     "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "dialect": "mysql"
   },
   production: {
     use_env_variable: 'DATABASE_URL',

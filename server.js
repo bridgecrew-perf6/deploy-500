@@ -1,15 +1,13 @@
 require("dotenv").config();
-const express = require("express");
+
+const express = require("express")
 const jsonwebtoken = require("jsonwebtoken");
 const db = require("./helper/relation");
+const app = express()
 
 const { Product, User, ImageUser, Image } = db;
 
-const app = express();
 const port = process.env.PORT || 3000;
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 app.post("/user", async (req, res) => {
   await User.create(req.body);
@@ -31,7 +29,7 @@ app.get("/get", async (req, res) => {
     // limit: JSON.parse(req.query.size), // <<<< jumlah isi dari page
     // include: [{ model: Product }],
   });
-  res.json({ data });
+  res.status(200).json({ data });
 });
 
 app.delete("/delete", async (req, res) => {
@@ -55,7 +53,7 @@ app.post("/image", async (req, res) => {
 
 
 app.get("/logout", async (req, res) => {
-  res.json({ message: "sudah logout" });
+  res.status(200).json({ message: "sudah logout" });
 });
 
-app.listen(port, () => console.log("Listening at port: " + port));
+module.exports = app
