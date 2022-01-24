@@ -1,34 +1,24 @@
-const {stub, resetHistory} = require("sinon")
-const {join} = require("path")
-const { makeMockModels, } = require('sequelize-test-helpers')
-const proxyquire = require("proxyquire")
+const {stub} = require("sinon")
+const jwt = require("jsonwebtoken")
+const {middleWareJWT} = require("../../Middleware/Middleware")
 
-const User = { findOne: stub() }
-const mockModels = makeMockModels({User}, join(__dirname + "../../../Controller"))
-const userController = proxyquire('../../Controller/User.js', {
-    '../models/user.js': mockModels
-  })
 
 describe('User', () => {
-    describe('Register', () => {
-        const registerRequest= {
-            username: 'abc@abc.com',
+    const request = {
+        headers: {
+            authorization: "asdassaddas"
         }
-        let res = {
-            end: function(){},
-            status: function(s) {this.statusCode = s; return this;},
-            json: function(d) { },
-        };
-        let result
+    }
+    const res = {
         
-        beforeEach(async () => {
-            User.findOne.resolves({message:"asdasdsd"})
-            result = await userController.register(registerRequest, res)
-          })
-    
-          afterEach(resetHistory)
-          it('1# get Find One', () => {
-            expect(result).toBeUndefined();
-        });
+    }
+    const next = () => {}
+    describe('Middleware asdasdasdasd', () => {
+        it('Must be called one', function(){
+        const callJwt = stub(jwt, "decode")
+        callJwt.resolves(true)
+        middleWareJWT(request, res, next)
+        expect(callJwt.calledOnce).toBeTruthy()
+        }) 
     })
 });

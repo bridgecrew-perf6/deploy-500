@@ -15,7 +15,24 @@ module.exports = {
             res.status(500).json({message: "User Tidak Berhasil dibuat"})
         }
     },
-    sum: (number) => {
-        return number + 2 
+    exampleGet: async (req, res) => {
+        const data = await User.findAll()
+        console.log(data)
+        res.status(201).json({message: "User berhasil dibuat", data})
+    },
+    exampleGetOne: async (req, res) => {
+        const data = await User.findOne({where: {id: req.params.id}})
+        console.log(data)
+        res.status(201).json({message: "User berhasil dibuat", data})
+    },
+    exampleUpdate: async (req, res) => {
+        const data = await User.update(req.body, {where: {id: req.params.id}})
+        console.log(data)
+        res.status(201).json({message: "User berhasil dibuat", data})
+    },
+    exampleDelete: async (req, res) => {
+        const data = await User.destroy({where: {id: req.params.id}})
+        console.log(data)
+        res.status(201).json({message: "User berhasil dibuat", data})
     }
 }
