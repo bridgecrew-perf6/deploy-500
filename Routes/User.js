@@ -7,16 +7,20 @@ const UserController = require("../Controller/User")
  * @swagger
  * /register:
  *  post:
- *    summary: Update the book by the id
+ *    summary: Update the User by the id
  *    tags: [USER]
  *    requestBody:
  *      required: true
  *      content:
- *          application/json:
+ *          application/x-www-form-urlencoded:
  *             schema:
  *                type: object
  *                properties:
  *                   username:
+ *                     type: string
+ *                     description: The user's name.
+ *                     example: Leanne
+ *                   password:
  *                     type: string
  *                     description: The user's name.
  *                     example: Leanne Graham
@@ -127,6 +131,8 @@ router.put("/update/:id", UserController.exampleUpdate)
  *        description: The book was not found
  *      500:
  *        description: Some error happened
+ *    security:
+ *    - api_key: []
  */
 
   router.delete("/delete/:id", UserController.exampleDelete)

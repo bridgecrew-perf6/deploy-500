@@ -31,6 +31,7 @@ module.exports = {
         res.status(201).json({message: "User berhasil dibuat", data})
     },
     exampleDelete: async (req, res) => {
+        console.log(req.params.id)
         const data = await User.destroy({where: {id: req.params.id}})
         console.log(data)
         res.status(201).json({message: "User berhasil dibuat", data})
